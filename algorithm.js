@@ -6,21 +6,34 @@
  * @return {number[]}
  */
 
+function ListNode(val, next) {
+  this.val = (val===undefined ? 0 : val)
+  this.next = (next===undefined ? null : next)
+}
 
- var twoSum = function(nums, target) {
-   let result = [];
+var mergeTwoLists = function(list1, list2) {
+  let curr = new ListNode();
+  const dummy = curr;
 
-   for(let i = 0; i<nums.length; i++) {
-    let targetNum = target - nums[i];
-
-    if (nums.indexOf(targetNum, i+1) > 0) {
-      result.push(i);
-      result.push(nums.indexOf(targetNum, i+1))
-      break;
+  while(list1 && list2) {
+    if (list1.val < list2.val) {
+      curr.next = list1;
+      list1 = list1.next;
+    } else {
+      curr.next = list2;
+      list2 = list2.next;
     }
-   }
 
-   return result;
+    curr = curr.next;
+  }
+
+  if (list1) curr.next = list1;
+  if (list2) curr.next = list2;
+
+  console.log('dummy',dummy);
+  console.log(JSON.stringify(dummy));
+
+  return dummy.next;
 };
 
-console.log(twoSum([3,2,4],6));
+mergeTwoLists([1,2,4],[1,3,4])
