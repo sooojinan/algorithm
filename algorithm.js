@@ -1,39 +1,37 @@
-
-
 /**
  * @param {number[]} nums
  * @param {number} target
- * @return {number[]}
+ * @return {number}
  */
+//  var searchInsert = function(nums, target) {
+//   let result = 0;
 
-function ListNode(val, next) {
-  this.val = (val===undefined ? 0 : val)
-  this.next = (next===undefined ? null : next)
-}
+//   for (let i=0; i<nums.length; i++) {
+//       if (nums[i] < target) {
+//           result++;
+//       } else {
+//           break;
+//       }
+//   }
 
-var mergeTwoLists = function(list1, list2) {
-  let curr = new ListNode();
-  const dummy = curr;
+//   return result;
+// };
 
-  while(list1 && list2) {
-    if (list1.val < list2.val) {
-      curr.next = list1;
-      list1 = list1.next;
+var searchInsert = function(nums, target) {
+  let left = 0;
+  let right = nums.length;
+
+  while(left < right) {
+    const middle = Math.floor((left+right)/2);
+
+    if (nums[middle] < target) {
+      left = middle + 1;
     } else {
-      curr.next = list2;
-      list2 = list2.next;
+      right = middle;
     }
-
-    curr = curr.next;
   }
 
-  if (list1) curr.next = list1;
-  if (list2) curr.next = list2;
-
-  console.log('dummy',dummy);
-  console.log(JSON.stringify(dummy));
-
-  return dummy.next;
+  return left;
 };
 
-mergeTwoLists([1,2,4],[1,3,4])
+searchInsert([1,3,5,6],7)
