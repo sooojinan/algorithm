@@ -1,16 +1,22 @@
 /**
- * @param {number[]} nums
+ * @param {number[]} prices
  * @return {number}
  */
- var singleNumber = function(nums) {
-    if (nums.length === 1) {return nums[0];}
+var maxProfit = function(prices) { 
+    let min = prices[0];
+    let max_profit = 0;
 
-    for(let i = 0; i < nums.length; i++){
-        if (nums.indexOf(nums[i]) === nums.lastIndexOf(nums[i])) {
-            return nums[i]
+    for(let i=0; i<prices.length-1; i++){
+        if (prices[i] > prices[i+1]) {
+            min = Math.min(min, prices[i+1])
+        } else {
+            prices[i] = min
+        }
+        if (prices[i+1] - min > 0) {
+            max_profit = Math.max(max_profit, prices[i+1] - min);
         }
     }
 
 };
 
-singleNumber([4,1,2,1,2])
+maxProfit([7,6,4,3,1])
