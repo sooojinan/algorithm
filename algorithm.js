@@ -2,19 +2,14 @@
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
- var moveZeroes = function(nums) {
-    let index = 0;
-    for(let i=0;i<nums.length;i++){
-        if (nums[index]===0) {
-            nums.splice(index,1);
-            nums.push(0);
-        } else {
-            index++;
-        }
-    }
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var majorityElement = function(nums) {
+    const sorts = nums.sort((a,b) => a - b);
 
+    return sorts[Math.floor(nums.length/2)];
     
-    return nums;
 };
-
-moveZeroes([0,0,1]) 
+majorityElement([2,2,1,2,1]) 
