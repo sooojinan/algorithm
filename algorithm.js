@@ -1,51 +1,12 @@
 /**
- * @param {string}
+ * @param {number[]} nums
  * @return {number}
  */
-var romanToInt = function (s) {
-  const roman = {
-    I: 1,
-    V: 5,
-    X: 10,
-    L: 50,
-    C: 100,
-    D: 500,
-    M: 1000,
-  };
+var removeDuplicates = function(nums) {
+  let set = new Set(nums);
+  nums.length = 0;
+  nums.push(...set.values());
 
-  const changeRoman = ['C','X','I'];
-
-  let result = 0;
-
-  for (let i = 0; i < s.length; i++) {
-
-
-    if (!s[i+1]) {
-        result += roman[s[i]];
-        continue;
-    }
-
-    if (s[i] === s[i+1]) {
-        result += roman[s[i]];
-        continue;
-    }
-
-    if (!changeRoman.includes(s[i])) {
-        result += roman[s[i]];
-        continue;
-    }
-
-    if (roman[s[i+1]] <= roman[s[i]]) {
-        result += roman[s[i]];
-        continue;
-    }
-
-    result += roman[s[i+1]] - roman[s[i]]
-    i++;
-
-  }
-
-  return result;
+  return nums.size
 };
-
-romanToInt("DCXXI");
+removeDuplicates([1,1,2]);
