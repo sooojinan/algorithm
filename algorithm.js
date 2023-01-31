@@ -1,34 +1,51 @@
 /**
- * @param {string[]} strs
- * @return {string}
+ * @param {string}
+ * @return {number}
  */
-var longestCommonPrefix = function(strs) {
-    let result = [];
-    let index = 0;
-    let isContain = false;
-    
-    for(let i=0; i<strs[0].length; i++) {
-        const char = strs[0][index];
+var romanToInt = function (s) {
+  const roman = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+  };
 
-        for (let j=0; j<strs.length; j++) {
-            if (strs[j][index] === char) {
-                isContain = true;
-                continue;
-            } else {
-                isContain = false;
-                break;
-            }
-        }
+  const changeRoman = ['C','X','I'];
 
-        if (isContain) {
-            result.push(char)
-            index++;
-        } else {
-            break;
-        }
+  let result = 0;
+
+  for (let i = 0; i < s.length; i++) {
+
+
+    if (!s[i+1]) {
+        result += roman[s[i]];
+        continue;
     }
 
-    return result.join('')
+    if (s[i] === s[i+1]) {
+        result += roman[s[i]];
+        continue;
+    }
 
+    if (!changeRoman.includes(s[i])) {
+        result += roman[s[i]];
+        continue;
+    }
+
+    if (roman[s[i+1]] <= roman[s[i]]) {
+        result += roman[s[i]];
+        continue;
+    }
+
+    result += roman[s[i+1]] - roman[s[i]]
+    i++;
+
+  }
+
+  return result;
 };
-longestCommonPrefix(["aaa","aa","aaa"]) 
+
+romanToInt("DCXXI");
