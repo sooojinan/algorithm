@@ -1,25 +1,18 @@
 /**
- * @param {number} x
- * @return {boolean}
+ * @param {number[]} nums
+ * @param {number} val
+ * @return {number}
  */
- var isPalindrome = function(x) {
-    if (x < 0)
-      return false;
-
-    const stringX = String(x);
-    const halfValue = Math.floor(stringX.length/2);
-    let result = true;
-
-    for (let i=0; i<halfValue; i++) {
-      if (stringX[i] === stringX[stringX.length-i-1 ]) {
+ var removeElement = function(nums, val) {
+    let index = 0;
+    while(index < nums.length) {
+      if(nums[index] === val) {
+        nums.splice(index,1);
         continue;
-      } else {
-        result = false;
-        break;
       }
+      index++;
     }
 
-    return result;
-
+    return nums.length
 };
-isPalindrome(12321);
+removeElement([0,1,2,2,3,0,4,2],2);
