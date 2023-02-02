@@ -1,12 +1,25 @@
 /**
- * @param {number[]} nums
- * @return {number}
+ * @param {number} x
+ * @return {boolean}
  */
-var removeDuplicates = function(nums) {
-  let set = new Set(nums);
-  nums.length = 0;
-  nums.push(...set.values());
+ var isPalindrome = function(x) {
+    if (x < 0)
+      return false;
 
-  return nums.size
+    const stringX = String(x);
+    const halfValue = Math.floor(stringX.length/2);
+    let result = true;
+
+    for (let i=0; i<halfValue; i++) {
+      if (stringX[i] === stringX[stringX.length-i-1 ]) {
+        continue;
+      } else {
+        result = false;
+        break;
+      }
+    }
+
+    return result;
+
 };
-removeDuplicates([1,1,2]);
+isPalindrome(12321);
