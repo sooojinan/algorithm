@@ -1,51 +1,25 @@
 /**
- * @param {string}
- * @return {number}
+ * @param {number} x
+ * @return {boolean}
  */
-var romanToInt = function (s) {
-  const roman = {
-    I: 1,
-    V: 5,
-    X: 10,
-    L: 50,
-    C: 100,
-    D: 500,
-    M: 1000,
-  };
+ var isPalindrome = function(x) {
+    if (x < 0)
+      return false;
 
-  const changeRoman = ['C','X','I'];
+    const stringX = String(x);
+    const halfValue = Math.floor(stringX.length/2);
+    let result = true;
 
-  let result = 0;
-
-  for (let i = 0; i < s.length; i++) {
-
-
-    if (!s[i+1]) {
-        result += roman[s[i]];
+    for (let i=0; i<halfValue; i++) {
+      if (stringX[i] === stringX[stringX.length-i-1 ]) {
         continue;
+      } else {
+        result = false;
+        break;
+      }
     }
 
-    if (s[i] === s[i+1]) {
-        result += roman[s[i]];
-        continue;
-    }
+    return result;
 
-    if (!changeRoman.includes(s[i])) {
-        result += roman[s[i]];
-        continue;
-    }
-
-    if (roman[s[i+1]] <= roman[s[i]]) {
-        result += roman[s[i]];
-        continue;
-    }
-
-    result += roman[s[i+1]] - roman[s[i]]
-    i++;
-
-  }
-
-  return result;
 };
-
-romanToInt("DCXXI");
+isPalindrome(12321);
