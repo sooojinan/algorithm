@@ -1,18 +1,16 @@
 /**
- * @param {number[]} nums
- * @param {number} val
- * @return {number}
+ * @param {number[]} digits
+ * @return {number[]}
  */
- var removeElement = function(nums, val) {
-    let index = 0;
-    while(index < nums.length) {
-      if(nums[index] === val) {
-        nums.splice(index,1);
-        continue;
-      }
-      index++;
-    }
+ var plusOne = function(digits) {
 
-    return nums.length
+  let numberDigits = BigInt(digits.join(''));
+
+  numberDigits++;
+
+  const result = [...String(numberDigits)];
+
+  return result
+
 };
-removeElement([0,1,2,2,3,0,4,2],2);
+plusOne([6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,3]);
