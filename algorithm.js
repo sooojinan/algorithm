@@ -1,16 +1,10 @@
 /**
- * @param {number[]} digits
- * @return {number[]}
+ * @param {string} s
+ * @return {number}
  */
- var plusOne = function(digits) {
-
-  let numberDigits = BigInt(digits.join(''));
-
-  numberDigits++;
-
-  const result = [...String(numberDigits)];
-
-  return result
-
+ var lengthOfLastWord = function(s) {
+    const string = s.trim();
+    const strArr = string.split(' ');
+    return strArr.at(-1).length;
 };
-plusOne([6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,3]);
+lengthOfLastWord("   fly me   to   the moon  ");
