@@ -1,22 +1,30 @@
 /**
- * @param {number[]} nums1
- * @param {number} m
- * @param {number[]} nums2
  * @param {number} n
- * @return {void} Do not return anything, modify nums1 in-place instead.
+ * @return {string[]}
  */
- var merge = function(nums1, m, nums2, n) {
-     nums1.length = m;
-     nums2.length = n;
+ var fizzBuzz = function(n) {
+     const words = {
+         '3': 'Fizz',
+         '5': 'Buzz',
+         '15': 'FizzBuzz'
+     }
 
-     nums1.push(...nums2)
+     let arr = []
 
-     let result = [];
-     result.push(...nums1.sort((a,b)=>{return a-b}))
+     for(let i=1;i<=n;i++){
+         if (i%3===0 && i%5===0) {
+             arr.push(words['15'])
+         } else if (i%3 === 0) {
+            arr.push(words['3'])
+         } else if (i%5 === 0) {
+            arr.push(words['5'])
+         } else {
+            arr.push(String(i))
+         }
+     }
 
-     nums1.length = 0;
-     nums1.push(...result)
+     return arr;
 };
 
-// console.log('merge',merge([-1,0,0,3,3,3,0,0,0],6,[1,2,2],3))
-console.log('merge',merge([-10,-10,-9,-9,-9,-8,-8,-7,-7,-7,-6,-6,-6,-6,-6,-6,-6,-5,-5,-5,-4,-4,-4,-3,-3,-2,-2,-1,-1,0,1,1,1,2,2,2,3,3,3,4,5,5,6,6,6,6,7,7,7,7,8,9,9,9,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],55,[-10,-10,-9,-9,-9,-9,-8,-8,-8,-8,-8,-7,-7,-7,-7,-7,-7,-7,-7,-6,-6,-6,-6,-5,-5,-5,-5,-5,-4,-4,-4,-4,-4,-3,-3,-3,-2,-2,-2,-2,-2,-2,-2,-1,-1,-1,0,0,0,0,0,1,1,1,2,2,2,2,2,2,2,2,3,3,3,3,4,4,4,4,4,4,4,5,5,5,5,5,5,6,6,6,6,6,7,7,7,7,7,7,7,8,8,8,8,9,9,9,9],99))
+
+console.log(fizzBuzz(15))
