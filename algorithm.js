@@ -1,30 +1,24 @@
 /**
- * @param {number} n
- * @return {string[]}
+ * @param {string} s
+ * @return {number}
  */
- var fizzBuzz = function(n) {
-     const words = {
-         '3': 'Fizz',
-         '5': 'Buzz',
-         '15': 'FizzBuzz'
+ var firstUniqChar = function(s) {
+     const map = new Map();
+
+     let result = -1;
+
+     for (let letter of s) {
+         !map.has(letter) ? map.set(letter,1) : map.set(letter,-1)
      }
 
-     let arr = []
-
-     for(let i=1;i<=n;i++){
-         if (i%3===0 && i%5===0) {
-             arr.push(words['15'])
-         } else if (i%3 === 0) {
-            arr.push(words['3'])
-         } else if (i%5 === 0) {
-            arr.push(words['5'])
-         } else {
-            arr.push(String(i))
-         }
+     for (let item of map) {
+         if (item[1] === 1) 
+            return result = s.indexOf(item[0])
+            
      }
 
-     return arr;
+     return result
 };
 
 
-console.log(fizzBuzz(15))
+console.log(firstUniqChar("aabb"))
