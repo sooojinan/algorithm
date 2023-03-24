@@ -1,24 +1,11 @@
 /**
- * @param {string} s
+ * @param {string} haystack
+ * @param {string} needle
  * @return {number}
  */
- var firstUniqChar = function(s) {
-     const map = new Map();
-
-     let result = -1;
-
-     for (let letter of s) {
-         !map.has(letter) ? map.set(letter,1) : map.set(letter,-1)
-     }
-
-     for (let item of map) {
-         if (item[1] === 1) 
-            return result = s.indexOf(item[0])
-            
-     }
-
-     return result
+ var strStr = function(haystack, needle) {
+    return haystack.indexOf(needle)
 };
 
 
-console.log(firstUniqChar("aabb"))
+console.log(strStr("leetcode","leeto"))
