@@ -1,24 +1,23 @@
 /**
- * @param {string} s
- * @return {number}
+ * @param {number} numRows
+ * @return {number[][]}
  */
- var firstUniqChar = function(s) {
-     const map = new Map();
+ var generate = function(numRows) {
+    let outerArr = []; 
+    let innerArr=[];
 
-     let result = -1;
+    for (let  i=1; i<numRows+1; i++) {
+        innerArr=[];
+        for(let j=1; j<i+1; j++) {
 
-     for (let letter of s) {
-         !map.has(letter) ? map.set(letter,1) : map.set(letter,-1)
-     }
+            if (j===1 || j===i) {
+                innerArr.push(1);
+                continue;
+            } else {
+                innerArr.push((outerArr[i-2][j-2] + outerArr[i-2][j-1]))
+            }        
+        }
+    }
 
-     for (let item of map) {
-         if (item[1] === 1) 
-            return result = s.indexOf(item[0])
-            
-     }
-
-     return result
+    return outerArr;
 };
-
-
-console.log(firstUniqChar("aabb"))
