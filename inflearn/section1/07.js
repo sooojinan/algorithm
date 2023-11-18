@@ -1,22 +1,15 @@
-function solution(nString) {
-  let nList = nString.split(' ');
-  let sum = 0;
-  let min = Infinity;
+function solution(day, carNum) {
+  let carNList = carNum.split(" ");
+  let count = 0;
   
-  for(let i=0; i<nList.length; i++) {
-    // 홀수라면
-    if ((Number(nList[i]))%2 !== 0) {
-      sum += Number(nList[i]);
-      min = Math.min(min, nList[i])
+  carNList.map((num)=>{
+    if (num % 10 === day) {
+      count++;
     }
-  }
+  })
 
-  return {
-    'sum': sum,
-    'min' : min
-  }
-  
+  return count;
 }
 
-console.log(solution("12 77 38 41 53 92 85"))
+console.log(solution(0, "12 20 54 30 87 91 30"))
 
